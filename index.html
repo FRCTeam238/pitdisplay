@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <title>FRC Team 238 Robot</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/animate.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script type="text/javascript" src="./js/2.2.0-jquery.min.js"></script>
+        <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="./js/main.js"></script>
+
+        <script>
+            jQuery.fn.center = function () {
+                this.css("position", "absolute");
+                this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) +
+                        $(window).scrollTop()) + "px");
+                this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) +
+                        $(window).scrollLeft()) + "px");
+                return this;
+            }
+
+            var sponsorShowing = 1;
+            var robotPhotoShowing = 1;
+            $(function () {
+                var totalH = $(window).height();
+                var sponsorsHeight = totalH / 7;
+                var logoHeight = totalH / 12;
+                var imagerotatorHeight = totalH - sponsorsHeight - logoHeight - 25;
+                $("#sponsors").height(sponsorsHeight);
+                $("#logoheight").height(logoHeight);
+                $("#botimages").height(imagerotatorHeight);
+                $("#botimages").center();
+                $("#leftButton").css("bottom", sponsorsHeight);
+                $("#rightButton").css("bottom", sponsorsHeight);
+                setInterval(changeSponsor, 5000);
+                $("#leftButton").click(function () {
+                    rotateRobotImageBackwards();
+                });
+                $("#rightButton").click(function () {
+                    rotateRobotImageForward();
+                });
+            });
+            function rotateRobotImageForward() {
+                $("#robotPhoto" + robotPhotoShowing).hide();
+                robotPhotoShowing++;
+                if (robotPhotoShowing > 9) {
+                    robotPhotoShowing = 1;
+                }
+                $("#robotPhoto" + robotPhotoShowing).show();
+            }
+            function rotateRobotImageBackwards() {
+                $("#robotPhoto" + robotPhotoShowing).hide();
+                robotPhotoShowing--;
+                if (robotPhotoShowing < 1) {
+                    robotPhotoShowing = 9;
+                }
+                $("#robotPhoto" + robotPhotoShowing).show();
+            }
+            function changeSponsor() {
+                $("#sponsor" + sponsorShowing).hide("medium");
+                sponsorShowing++;
+                if (sponsorShowing > 20) {
+                    sponsorShowing = 1;
+                }
+                $("#sponsor" + sponsorShowing).show("fast");
+            }
+        </script>
+
+    </head>
+    <body>
+        <div class="center-block" style="position:absolute;top:0;width:100%;background-color:black;min-height:75px;" id="logoheight">
+            <img src="images/logo.png" alt="238 Logo" id="teamlogo" style="margin-left:auto;margin-right:auto;display:block;height:85%;" />
+        </div>
+
+        <div id="botimages" style="width:60%;text-align:center;vertical-align:middle;">
+            <img src="images/robot/1.png" alt="RobotPhoto1" id="robotPhoto1" />
+            <img src="images/robot/2.png" alt="RobotPhoto2" id="robotPhoto2" style="display:none;" />
+            <img src="images/robot/3.png" alt="RobotPhoto3" id="robotPhoto3" style="display:none;" />
+            <img src="images/robot/4.png" alt="RobotPhoto4" id="robotPhoto4" style="display:none;" />
+            <img src="images/robot/5.png" alt="RobotPhoto5" id="robotPhoto5" style="display:none;" />
+            <img src="images/robot/6.png" alt="RobotPhoto6" id="robotPhoto6" style="display:none;" />
+            <img src="images/robot/7.png" alt="RobotPhoto7" id="robotPhoto7" style="display:none;" />
+            <img src="images/robot/8.png" alt="RobotPhoto8" id="robotPhoto8" style="display:none;" />
+            <img src="images/robot/9.png" alt="RobotPhoto9" id="robotPhoto9" style="display:none;" />
+        </div>
+
+        <div class="text-center" style="position:absolute;width:20%;height:200px;" id="leftButton">
+            <img src="images/arrowleft.png" alt="Move Left" id="leftArr" style="margin-left:auto;margin-right:auto;" />
+        </div>
+        <div class="text-center" style="position:absolute;right:0;width:20%;height:200px;" id="rightButton">
+            <img src="images/arrowright.png" alt="Move Right" id="rightArr" style="margin-left:auto;margin-right:auto;" />
+        </div>
+
+        <div class="text-center" style="position:absolute;bottom:0;width:100%;background-color:yellow;min-height:75px;font-size:20px;vertical-align:middle;" id="sponsors">
+            <span id="sponsor1">Bosch</span>
+            <span style="display:none;top:0;bottom:0;" id="sponsor2">Manchester Memorial High School</span>
+            <span style="display:none;" id="sponsor3">New Hampshire Department of Education</span>
+            <span style="display:none;" id="sponsor4">Texas Instruments</span>
+            <span style="display:none;" id="sponsor5">BAE Systems</span>
+            <span style="display:none;" id="sponsor6">Davignon Club</span>
+            <span style="display:none;" id="sponsor7">FIRST</span>
+            <span style="display:none;" id="sponsor8">Millennium Precision LLC</span>
+            <span style="display:none;" id="sponsor9">MuShield Company</span>
+            <span style="display:none;" id="sponsor10">Rapid Manufacturing</span>
+            <span style="display:none;" id="sponsor11">Sunrise Labs Inc.</span>
+            <span style="display:none;" id="sponsor12">WestCoast Products</span>
+            <span style="display:none;" id="sponsor13">Autodesk</span>
+            <span style="display:none;" id="sponsor14">Aviation Museum of New Hampshire</span>
+            <span style="display:none;" id="sponsor15">Batteries Plus Bulbs</span>
+            <span style="display:none;" id="sponsor16">FIRST New Hampshire</span>
+            <span style="display:none;" id="sponsor17">Graffitee Wear</span>
+            <span style="display:none;" id="sponsor18">IEEE-NH</span>
+            <span style="display:none;" id="sponsor19">Marmon Aerospace & Defense</span>
+            <span style="display:none;" id="sponsor20">Temco Tool Co., Inc.</span>
+        </div>
+    </body>
+</html>
