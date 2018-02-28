@@ -25,7 +25,8 @@
                 var sponsorsHeight = totalH / 7;
                 var logoHeight = totalH / 12;
                 var imagerotatorHeight = totalH - sponsorsHeight - logoHeight - 25;
-                $("#sponsors").height(sponsorsHeight);
+                $(".footerheight").css("height", sponsorsHeight);
+                $("#thanksbanner").css("padding-bottom", sponsorsHeight);
                 $("#logoheight").height(logoHeight);
                 $("#botimages").height(imagerotatorHeight);
                 $("#botimages").center();
@@ -77,11 +78,6 @@
                 display: inline-block;
                 font-size: 3vw;
             }
-            .siszed2img{
-                width: 100%;
-                height: auto;
-
-            }
         </style>
     </head>
     <body>
@@ -101,16 +97,20 @@
             <img src="images/robot/9.png" alt="RobotPhoto9" id="robotPhoto9" style="display:none;" />
         </div>
 
-        <div class="text-center" style="position:absolute;width:20%;height:200px;" id="leftButton">
+        <div class="text-center" style="position:absolute;width:20%;height:250px;" id="leftButton">
             <img src="images/arrowleft.png" alt="Move Left" id="leftArr" style="margin-left:auto;margin-right:auto;" />
         </div>
-        <div class="text-center" style="position:absolute;right:0;width:20%;height:200px;" id="rightButton">
+        <div class="text-center" style="position:absolute;right:0;width:20%;height:250px;" id="rightButton">
             <img src="images/arrowright.png" alt="Move Right" id="rightArr" style="margin-left:auto;margin-right:auto;" />
         </div>
 
-        <div class="text-center cn center-block" 
-             style="position:absolute;bottom:0;width:100%;background-color:yellow;min-height:75px;font-size:20px;vertical-align:middle;overflow:hidden;" 
-             id="sponsors">
+        <div class="" id="thanksbanner"
+             style="position:absolute;bottom:0;width:100%;background-color:black;color:white;font-size:15px;overflow:hidden;">
+            <div class="text-center"><em>Team 238 Would Like To Thank Our Generous Sponsors:</em></div>
+        </div>
+        
+        <div class="text-center cn center-block footerheight" 
+             style="position:absolute;bottom:0;width:100%;background-color:yellow;min-height:75px;font-size:20px;vertical-align:middle;overflow:hidden;">
             <div id="sponsormaxheight">
                 <div id="sponsor1" class="inner"><img src="images/sponsors/bosch-logo.png" alt="Bosch" class="sizedimg" /></div>
                 <div style="display:none;" id="sponsor2" class="inner"><img src="images/sponsors/mmhs-logo.png" alt="Manchester Memorial High School" class="sizedimg" /></div>
@@ -134,5 +134,8 @@
                 <div style="display:none;" id="sponsor20" class="inner">Temco Tool Co., Inc.</div>
             </div>
         </div>
+
+        
+
     </body>
 </html>
