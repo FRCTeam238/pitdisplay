@@ -22,6 +22,7 @@
             var robotPhotoShowing = 1;
             $(function () {
                 var totalH = $(window).height();
+                var totalW= $(window).width();
                 var sponsorsHeight = totalH / 7;
                 var logoHeight = totalH / 12;
                 var imagerotatorHeight = totalH - sponsorsHeight - logoHeight - 25;
@@ -29,6 +30,8 @@
                 $("#thanksbanner").css("padding-bottom", sponsorsHeight);
                 $("#logoheight").height(logoHeight);
                 $("#botimages").height(imagerotatorHeight);
+                $(".robotphoto").css("max-height", imagerotatorHeight - 40);
+                $(".robotphoto").css("max-width", ((totalW /4 )*3));
                 $("#botimages").center();
                 $("#leftButton").css("bottom", sponsorsHeight);
                 $("#rightButton").css("bottom", sponsorsHeight);
@@ -45,7 +48,7 @@
             function rotateRobotImageForward() {
                 $("#robotPhoto" + robotPhotoShowing).hide();
                 robotPhotoShowing++;
-                if (robotPhotoShowing > 9) {
+                if (robotPhotoShowing > 4) {
                     robotPhotoShowing = 1;
                 }
                 $("#robotPhoto" + robotPhotoShowing).show();
@@ -54,7 +57,7 @@
                 $("#robotPhoto" + robotPhotoShowing).hide();
                 robotPhotoShowing--;
                 if (robotPhotoShowing < 1) {
-                    robotPhotoShowing = 9;
+                    robotPhotoShowing = 4;
                 }
                 $("#robotPhoto" + robotPhotoShowing).show();
             }
@@ -86,15 +89,10 @@
         </div>
 
         <div id="botimages" style="width:60%;text-align:center;vertical-align:middle;">
-            <img src="images/robot/1.png" alt="RobotPhoto1" id="robotPhoto1" />
-            <img src="images/robot/2.png" alt="RobotPhoto2" id="robotPhoto2" style="display:none;" />
-            <img src="images/robot/3.png" alt="RobotPhoto3" id="robotPhoto3" style="display:none;" />
-            <img src="images/robot/4.png" alt="RobotPhoto4" id="robotPhoto4" style="display:none;" />
-            <img src="images/robot/5.png" alt="RobotPhoto5" id="robotPhoto5" style="display:none;" />
-            <img src="images/robot/6.png" alt="RobotPhoto6" id="robotPhoto6" style="display:none;" />
-            <img src="images/robot/7.png" alt="RobotPhoto7" id="robotPhoto7" style="display:none;" />
-            <img src="images/robot/8.png" alt="RobotPhoto8" id="robotPhoto8" style="display:none;" />
-            <img src="images/robot/9.png" alt="RobotPhoto9" id="robotPhoto9" style="display:none;" />
+            <img src="images/robot/1.png" alt="RobotPhoto1" class="robotphoto" id="robotPhoto1" />
+            <img src="images/robot/2.png" alt="RobotPhoto2" class="robotphoto" id="robotPhoto2" style="display:none;" />
+            <img src="images/robot/3.png" alt="RobotPhoto3" class="robotphoto" id="robotPhoto3" style="display:none;" />
+            <img src="images/robot/4.png" alt="RobotPhoto4" class="robotphoto" id="robotPhoto4" style="display:none;" />s
         </div>
 
         <div class="text-center" style="position:absolute;width:20%;height:250px;" id="leftButton">
