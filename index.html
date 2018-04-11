@@ -16,25 +16,31 @@
                 this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) +
                         $(window).scrollLeft()) + "px");
                 return this;
-            }
+            };
 
             var sponsorShowing = 1;
             var robotPhotoShowing = 1;
             $(function () {
+                document.addEventListener('contextmenu', event => event.preventDefault());//no right clicks allowed
+
                 var totalH = $(window).height();
-                var totalW= $(window).width();
+                var totalW = $(window).width();
                 var sponsorsHeight = totalH / 7;
+                var phototextHeight = sponsorsHeight * 1.5;
                 var logoHeight = totalH / 12;
-                var imagerotatorHeight = totalH - sponsorsHeight - logoHeight - 20;
-                $(".footerheight").css("height", sponsorsHeight);
+                var nonRotatorHeights = logoHeight + sponsorsHeight + phototextHeight + 150;//alert(totalH);
+                var imagerotatorHeight = totalH - nonRotatorHeights - 20;//alert(imagerotatorHeight);
+
+                $("#photoTextDesc").css("height", phototextHeight);
                 $("#thanksbanner").css("padding-bottom", sponsorsHeight);
+                $("#touchButtonContainer").css("padding-top", logoHeight + 5);
+                $("#photoTextDesc").css("bottom", sponsorsHeight + $("#thanksbanner").height());
+                $(".footerheight").css("height", sponsorsHeight);
                 $("#logoheight").height(logoHeight);
                 $("#botimages").height(imagerotatorHeight);
                 $(".robotphoto").css("max-height", imagerotatorHeight - 40);
-                $(".robotphoto").css("max-width", ((totalW /5 )*3));
-                $("#botimages").center();
-                $("#leftButton").css("bottom", sponsorsHeight);
-                $("#rightButton").css("bottom", sponsorsHeight);
+                $(".robotphoto").css("max-width", ((totalW / 5) * 3));
+                //$("#botimages").center();
                 setInterval(changeSponsor, 5000);
                 $("#leftButton").click(function () {
                     rotateRobotImageBackwards();
@@ -42,25 +48,28 @@
                 $("#rightButton").click(function () {
                     rotateRobotImageForward();
                 });
-
                 $(".sizedimg").css("max-height", sponsorsHeight - 25);
-                $(".sizedimg").css("max-width", totalW-25);
+                $(".sizedimg").css("max-width", totalW - 25);
             });
             function rotateRobotImageForward() {
-                $("#robotPhoto" + robotPhotoShowing).hide();
+                $("#robotPhoto" + robotPhotoShowing).hide("fast");
+                $("#textDesc" + robotPhotoShowing).hide();
                 robotPhotoShowing++;
                 if (robotPhotoShowing > 7) {
                     robotPhotoShowing = 1;
                 }
-                $("#robotPhoto" + robotPhotoShowing).show();
+                $("#robotPhoto" + robotPhotoShowing).show("fast");
+                $("#textDesc" + robotPhotoShowing).show();
             }
             function rotateRobotImageBackwards() {
-                $("#robotPhoto" + robotPhotoShowing).hide();
+                $("#robotPhoto" + robotPhotoShowing).hide("fast");
+                $("#textDesc" + robotPhotoShowing).hide();
                 robotPhotoShowing--;
-                if (robotPhotoShowing < 7) {
-                    robotPhotoShowing = 6;
+                if (robotPhotoShowing < 1) {
+                    robotPhotoShowing = 7;
                 }
-                $("#robotPhoto" + robotPhotoShowing).show();
+                $("#robotPhoto" + robotPhotoShowing).show("fast");
+                $("#textDesc" + robotPhotoShowing).show();
             }
             function changeSponsor() {
                 $("#sponsor" + sponsorShowing).hide("medium");
@@ -85,64 +94,85 @@
         </style>
     </head>
     <body>
-        <div style="position:absolute;top:15px;left:15px;background-color:gray;color:yellow;z-index:1;font-size:30px;width:15%;" class="text-center">
-            I'm a touch screen!<br />Just click the arrows to see more
+        <div style="position:absolute;top:20px;left:15px;padding:5px;background-color:black;z-index:1;font-size:30px;width:15%;" class="text-center" id="leftButton">
+            <img src="images/arrowleft.png" alt="Move Left" id="leftArr" style="margin-left:auto;margin-right:auto;" />
         </div>
-        
+        <div style="position:absolute;top:20px;right:15px;padding:5px;background-color:black;z-index:1;" class="text-center" id="rightButton">
+            <img src="images/arrowright.png" alt="Move Right" id="rightArr" style="margin-left:auto;margin-right:auto;" />
+        </div>
+        <div style="padding:5px;z-index:1;font-size:25px;width:100%;" class="text-center" id="touchButtonContainer">
+            <div style="position:relative;left:50%;float:left;">
+                <div style="position:relative;left:-50%;float:left;background-color:gray;color:yellow;padding:5px;">
+                    I'm a touch screen!<br />Just click the arrows to see more
+                </div>
+            </div>
+        </div>
+
         <div class="center-block" style="position:absolute;top:0;width:100%;background-color:black;min-height:75px;" id="logoheight">
             <img src="images/logo.png" alt="238 Logo" id="teamlogo" style="margin-left:auto;margin-right:auto;display:block;height:85%;" />
         </div>
 
-        <div id="botimages" style="width:60%;text-align:center;vertical-align:middle;">
-          <div id="robotPhoto1" class="robotphoto">
-            <p class="robotTitle" style="">CATWOMAN</p>
-            <img src="images/robot/1.png" alt="RobotPhoto1" class="robotphoto"/>
-            <p class="robotDescription">Team 238’s Robot for the 2018 season is CATWOMAN. We named this robot Catwoman to go along with our Batman villain theme where our competition bot is the villain's name and our practice bot is their alter ego. Catwoman is sly, cunning, has great strategy skills and is great at climbing which goes along with the endgame for this year.</p>
-          </div>
-          <div id="robotPhoto2" class="robotphoto" style="display:none;">
-            <p class="robotTitle"">Elevator Collapsed</p>
-            <img src="images/robot/2.png" alt="RobotPhoto2" class="robotphoto"/>
-            <p class="robotDescription">Our two stage elevator can reach up to 7 feet high! It shifts back and forth between a high speed mode for lifting cubes fast and high torque mode for more power while climbing. It is powered by 3 mini-CIMs through two continuous 15mm wide HTD belt runs. On the top of our elevator are 2 hooks meant for climbing in order to face the boss. </p>
-          </div>
-          <div id="robotPhoto3" class="robotphoto" style="display:none;">
-            <p class="robotTitle"">Elevator Extended</p>
-            <img src="images/robot/3.png" alt="RobotPhoto3" class="robotphoto" />
-            <p class="robotDescription">Our two stage elevator can reach up to 7 feet high! It shifts back and forth between a high speed mode for lifting cubes fast and high torque mode for more power while climbing. It is powered by 3 mini-CIMs through two continuous 15mm wide HTD belt runs. On the top of our elevator are 2 hooks meant for climbing in order to face the boss. </p>
-          </div>
-          <div id="robotPhoto4" class="robotphoto" style="display:none;">
-            <p class="robotTitle"">Facing the Boss!</p>
-            <img src="images/robot/4.png" alt="RobotPhoto4" class="robotphoto" />
-            <p class="robotDescription">These 2’ 9” “forks” are used to lift other robots in order to get the ranking point for facing the boss. Our alliance partner just has to drive on to our forks and we can lift them. They are deployed via a pneumatic latch.</p>
-          </div>
-          <div id="robotPhoto5" class="robotphoto" style="display:none;">
-            <p class="robotTitle"">Forks</p>
-            <img src="images/robot/5.png" alt="RobotPhoto5" class="robotphoto" />
-            <p class="robotDescription">These 2’ 9”  “forks” are used to lift other robots in order to get the ranking point for facing the boss. Our alliance partner just has to drive on to our forks and we can lift them. They are deployed via a pneumatic latch.</p>
-          </div>
-          <div id="robotPhoto6" class="robotphoto" style="display:none;">
-            <p class="robotTitle"">Intake</p>
-            <img src="images/robot/6.png" alt="RobotPhoto6" class="robotphoto" />
-            <p class="robotDescription">This intake has 4 compliant wheels that actively grabs cubes and holds it on a plate to carry up the elevator. The intake is being run off two 9:1 gearboxes powered by 775pros. The intake wrist is powered by at 252:1 gearbox with a BAG motor. Another great feature of our intake is that it is really flexible and will wrap around the cube. If another robot runs into our intake it can bend out of the way.</p>
-          </div>
-          <div id="robotPhoto7" class="robotphoto" style="display:none;">
-            <p class="robotTitle"">Drivetrain</p>
-            <img src="images/robot/7.png" alt="RobotPhoto7" class="robotphoto" />
-            <p class="robotDescription">Our drivetrain this year follows the west coast style with 6 - 6” wheels: 2 omnis and 4 Colsons. We have a 3 mini-CIM pneumatic ball shifter that allows us to have two different speeds, 8 and 17 ft/s. Our electrical board was carefully planned out and even designed in CAD to ensure all the components had their own spot.</p>
-          </div>
+        <div id="botimages" style="width:100%;text-align:center;">
+            <div style="width:100%;text-align:center;" class="cn">
+                <div id="robotPhoto1" class="inner">
+                    <p class="robotTitle">CATWOMAN</p>
+                    <img src="images/robot/1.png" alt="RobotPhoto1" class="robotphoto"/>
+                </div>
+                <div id="robotPhoto2" class="" style="display:none;">
+                    <p class="robotTitle">Elevator Collapsed</p>
+                    <img src="images/robot/2.png" alt="RobotPhoto2" class="robotphoto"/>
+                </div>
+                <div id="robotPhoto3" class="" style="display:none;">
+                    <p class="robotTitle">Elevator Extended</p>
+                    <img src="images/robot/3.png" alt="RobotPhoto3" class="robotphoto" />
+                </div>
+                <div id="robotPhoto4" class="" style="display:none;">
+                    <p class="robotTitle">Facing the Boss!</p>
+                    <img src="images/robot/4.png" alt="RobotPhoto4" class="robotphoto" />
+                </div>
+                <div id="robotPhoto5" class="" style="display:none;">
+                    <p class="robotTitle">Forks</p>
+                    <img src="images/robot/5.png" alt="RobotPhoto5" class="robotphoto" />
+                </div>
+                <div id="robotPhoto6" class="" style="display:none;">
+                    <p class="robotTitle">Intake</p>
+                    <img src="images/robot/6.png" alt="RobotPhoto6" class="robotphoto" />
+                </div>
+                <div id="robotPhoto7" class="" style="display:none;">
+                    <p class="robotTitle">Drivetrain</p>
+                    <img src="images/robot/7.png" alt="RobotPhoto7" class="robotphoto" />
+                </div>
+            </div>
         </div>
 
-        <div class="text-center" style="position:absolute;width:20%;height:250px;" id="leftButton">
-            <img src="images/arrowleft.png" alt="Move Left" id="leftArr" style="margin-left:auto;margin-right:auto;" />
+        <div id="photoTextDesc" style="position:absolute;width:100%;overflow:hidden;padding-left:10px;padding-right:10px;" align="justify" class="cn">
+            <div id="textDesc1" class="robotDescription inner">Team 238's Robot for the 2018 season is CATWOMAN. We named this robot Catwoman to go along with our Batman villain 
+                theme where our competition bot is the villain's name and our practice bot is their alter ego. Catwoman is sly, cunning, has great strategy 
+                skills and is great at climbing which goes along with the endgame for this year.</div>
+            <div id="textDesc2" class="robotDescription" style="display:none;">Our two stage elevator can reach up to 7 feet high! It shifts back and forth between a high speed mode for lifting 
+                cubes fast and high torque mode for more power while climbing. It is powered by 3 mini-CIMs through two continuous 15mm wide HTD belt runs. 
+                On the top of our elevator are 2 hooks meant for climbing in order to face the boss. </div>
+            <div id="textDesc3" class="robotDescription" style="display:none;">Our two stage elevator can reach up to 7 feet high! It shifts back and forth between a high speed mode for lifting 
+                cubes fast and high torque mode for more power while climbing. It is powered by 3 mini-CIMs through two continuous 15mm wide HTD belt runs. 
+                On the top of our elevator are 2 hooks meant for climbing in order to face the boss. </div>
+            <div id="textDesc4" class="robotDescription" style="display:none;">This pair of forks are used to lift other robots in order to get the ranking point for facing the boss. Our alliance 
+                partner just has to drive on to our forks and we can lift them. They are deployed via a pneumatic latch.</div>
+            <div id="textDesc5" class="robotDescription" style="display:none;">This pair of forks are used to lift other robots in order to get the ranking point for facing the boss. An alliance 
+                partner just has to drive on to our forks and we can lift them. They are deployed via a pneumatic latch.</div>
+            <div id="textDesc6" class="robotDescription" style="display:none;">This intake has 4 compliant wheels that actively grabs cubes and holds it on a plate to carry up the elevator. 
+                The intake is being run off two 9:1 gearboxes powered by 775pros. The intake wrist is powered by at 252:1 gearbox with a BAG motor. 
+                Another great feature of our intake is that it is really flexible and will wrap around the cube. If another robot runs into our intake 
+                it can bend out of the way.</div>
+            <div id="textDesc7" class="robotDescription" style="display:none;">Our drivetrain this year follows the west coast style with 6 - 6&quot; wheels: 2 omnis and 4 Colsons. We have a 
+                3 mini-CIM pneumatic ball shifter that allows us to have two different speeds, 8 and 17 ft/s. Our electrical board was carefully planned 
+                out and even designed in CAD to ensure all the components had their own spot.</div>
         </div>
-        <div class="text-center" style="position:absolute;right:0;width:20%;height:250px;" id="rightButton">
-            <img src="images/arrowright.png" alt="Move Right" id="rightArr" style="margin-left:auto;margin-right:auto;" />
-        </div>
-        
+
         <div class="" id="thanksbanner"
-             style="position:absolute;bottom:0;width:100%;background-color:black;color:white;font-size:15px;overflow:hidden;">
+             style="position:absolute;bottom:0;width:100%;background-color:black;color:white;font-size:20px;overflow:hidden;">
             <div class="text-center"><em>Team 238 Would Like To Thank Our Generous Sponsors:</em></div>
         </div>
-        
+
         <div class="text-center cn center-block footerheight" 
              style="position:absolute;bottom:0;width:100%;background-color:yellow;min-height:75px;font-size:20px;vertical-align:middle;overflow:hidden;">
             <div id="sponsormaxheight">
@@ -165,8 +195,5 @@
                 <div style="display:none;" id="sponsor17" class="inner">Temco Tool Co., Inc.</div>
             </div>
         </div>
-
-        
-
     </body>
 </html>
