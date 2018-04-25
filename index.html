@@ -52,23 +52,23 @@
                 $(".sizedimg").css("max-width", totalW - 25);
             });
             function rotateRobotImageForward() {
-                $("#robotPhoto" + robotPhotoShowing).hide("fast");
+                $("#robotPhoto" + robotPhotoShowing).hide("slow");
                 $("#textDesc" + robotPhotoShowing).hide();
                 robotPhotoShowing++;
                 if (robotPhotoShowing > 7) {
                     robotPhotoShowing = 1;
                 }
-                $("#robotPhoto" + robotPhotoShowing).show("fast");
+                $("#robotPhoto" + robotPhotoShowing).show("slow");
                 $("#textDesc" + robotPhotoShowing).show();
             }
             function rotateRobotImageBackwards() {
-                $("#robotPhoto" + robotPhotoShowing).hide("fast");
+                $("#robotPhoto" + robotPhotoShowing).hide("slow");
                 $("#textDesc" + robotPhotoShowing).hide();
                 robotPhotoShowing--;
                 if (robotPhotoShowing < 1) {
                     robotPhotoShowing = 7;
                 }
-                $("#robotPhoto" + robotPhotoShowing).show("fast");
+                $("#robotPhoto" + robotPhotoShowing).show("slow");
                 $("#textDesc" + robotPhotoShowing).show();
             }
             function changeSponsor() {
@@ -94,10 +94,10 @@
         </style>
     </head>
     <body>
-        <div style="position:absolute;top:20px;left:15px;padding:5px;background-color:black;z-index:1;font-size:30px;width:15%;" class="text-center" id="leftButton">
+        <div style="position:absolute;top:-2px;left:15px;padding:5px;background-color:black;z-index:1;font-size:30px;width:15%;" class="text-center" id="leftButton">
             <img src="images/arrowleft.png" alt="Move Left" id="leftArr" style="margin-left:auto;margin-right:auto;" />
         </div>
-        <div style="position:absolute;top:20px;right:15px;padding:5px;background-color:black;z-index:1;" class="text-center" id="rightButton">
+        <div style="position:absolute;top:-2px;right:15px;padding:5px;background-color:black;z-index:1;" class="text-center" id="rightButton">
             <img src="images/arrowright.png" alt="Move Right" id="rightArr" style="margin-left:auto;margin-right:auto;" />
         </div>
         <div style="padding:5px;z-index:1;font-size:25px;width:100%;" class="text-center" id="touchButtonContainer">
