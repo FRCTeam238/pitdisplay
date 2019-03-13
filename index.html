@@ -55,7 +55,7 @@
                 $("#robotPhoto" + robotPhotoShowing).hide("slow");
                 $("#textDesc" + robotPhotoShowing).hide();
                 robotPhotoShowing++;
-                if (robotPhotoShowing > 5) {
+                if (robotPhotoShowing > 9) {
                     robotPhotoShowing = 1;
                 }
                 $("#robotPhoto" + robotPhotoShowing).show("slow");
@@ -66,7 +66,7 @@
                 $("#textDesc" + robotPhotoShowing).hide();
                 robotPhotoShowing--;
                 if (robotPhotoShowing < 1) {
-                    robotPhotoShowing = 5;
+                    robotPhotoShowing = 9;
                 }
                 $("#robotPhoto" + robotPhotoShowing).show("slow");
                 $("#textDesc" + robotPhotoShowing).show();
@@ -74,7 +74,7 @@
             function changeSponsor() {
                 $("#sponsor" + sponsorShowing).hide("medium");
                 sponsorShowing++;
-                if (sponsorShowing > 17) {
+                if (sponsorShowing > 12) {
                     sponsorShowing = 1;
                 }
                 $("#sponsor" + sponsorShowing).show("fast");
@@ -115,45 +115,54 @@
         <div id="botimages" style="width:100%;text-align:center;">
             <div style="width:100%;text-align:center;" class="cn">
                 <div id="robotPhoto1" class="inner">
-                    <p class="robotTitle">CATWOMAN</p>
-                    <img src="images/robot/1.png" alt="RobotPhoto1" class="robotphoto"/>
+                    <p class="robotTitle">Starting Config - Side</p>
+                    <img src="images/robot/2019/1.png" alt="RobotPhoto1" class="robotphoto"/>
                 </div>
                 <div id="robotPhoto2" class="" style="display:none;">
-                    <p class="robotTitle">CATWOMAN Extended</p>
-                    <img src="images/robot/2.png" alt="RobotPhoto2" class="robotphoto"/>
+                    <p class="robotTitle">Starting Config - ISO</p>
+                    <img src="images/robot/2019/2.png" alt="RobotPhoto2" class="robotphoto"/>
                 </div>
                 <div id="robotPhoto3" class="" style="display:none;">
-                    <p class="robotTitle">Elevator</p>
-                    <img src="images/robot/3.png" alt="RobotPhoto3" class="robotphoto" />
+                    <p class="robotTitle">Starting Config - Front</p>
+                    <img src="images/robot/2019/3.png" alt="RobotPhoto3" class="robotphoto" />
                 </div>
                 <div id="robotPhoto4" class="" style="display:none;">
-                    <p class="robotTitle">Intake</p>
-                    <img src="images/robot/4.png" alt="RobotPhoto4" class="robotphoto" />
+                    <p class="robotTitle">Full Extend - Side</p>
+                    <img src="images/robot/2019/4.png" alt="RobotPhoto4" class="robotphoto" />
                 </div>
                 <div id="robotPhoto5" class="" style="display:none;">
-                    <p class="robotTitle">Drivetrain</p>
-                    <img src="images/robot/5.png" alt="RobotPhoto5" class="robotphoto" />
+                    <p class="robotTitle">Full Extend - ISO</p>
+                    <img src="images/robot/2019/5.png" alt="RobotPhoto5" class="robotphoto" />
+                </div>
+                <div id="robotPhoto6" class="" style="display:none;">
+                    <p class="robotTitle">Full Extend - Front</p>
+                    <img src="images/robot/2019/6.png" alt="RobotPhoto6" class="robotphoto" />
+                </div>
+                <div id="robotPhoto7" class="" style="display:none;">
+                    <p class="robotTitle">Full Extend - Side</p>
+                    <img src="images/robot/2019/7.png" alt="RobotPhoto7" class="robotphoto" />
+                </div>
+                <div id="robotPhoto8" class="" style="display:none;">
+                    <p class="robotTitle">Full Cargo Extend - ISO</p>
+                    <img src="images/robot/2019/8.png" alt="RobotPhoto8" class="robotphoto" />
+                </div>
+                <div id="robotPhoto9" class="" style="display:none;">
+                    <p class="robotTitle">Full Cargo Extend - Front</p>
+                    <img src="images/robot/2019/9.png" alt="RobotPhoto9" class="robotphoto" />
                 </div>
             </div>
         </div>
 
         <div id="photoTextDesc" style="position:absolute;width:100%;overflow:hidden;padding-left:10px;padding-right:10px;" align="justify" class="cn">
-            <div id="textDesc1" class="robotDescription inner">Team 238's Robot for the 2018 season is CATWOMAN. We named this robot Catwoman to go along with our Batman villain 
-                theme where our competition bot is the villain's name and our practice bot is their alter ego. Catwoman is sly, cunning, has great strategy 
-                skills and is great at climbing which goes along with the endgame for this year.</div>
-            <div id="textDesc2" class="robotDescription" style="display:none;">Our two stage elevator can reach up to 7 feet high! It shifts back and forth between a high speed mode for lifting 
-                cubes fast and high torque mode for more power while climbing. It is powered by 3 mini-CIMs through two continuous 15mm wide HTD belt runs. 
-                On the top of our elevator are 2 hooks meant for climbing in order to face the boss. </div>
-            <div id="textDesc3" class="robotDescription" style="display:none;">Our two stage elevator can reach up to 7 feet high! It shifts back and forth between a high speed mode for lifting 
-                cubes fast and high torque mode for more power while climbing. It is powered by 3 mini-CIMs through two continuous 15mm wide HTD belt runs. 
-                On the top of our elevator are 2 hooks meant for climbing in order to face the boss. </div>
-            <div id="textDesc4" class="robotDescription" style="display:none;">This intake has 4 compliant wheels that actively grab cubes and a shelf to hold them as the elevator moves. 
-                The intake is being run off two 9:1 gearboxes powered by 775pros. The intake wrist is powered by at 252:1 gearbox with a BAG motor. 
-                Another great feature of our intake is that it is really flexible and will wrap around the cube. If another robot runs into our intake 
-                it can bend out of the way.</div>
-            <div id="textDesc5" class="robotDescription" style="display:none;">Our drivetrain this year follows the west coast style with 6 - 6&quot; wheels: 2 omnis and 4 Colsons. We have a 
-                3 mini-CIM pneumatic ball shifter that allows us to have two different speeds, 8 and 17 ft/s. Our electrical board was carefully planned 
-                out and even designed in CAD to ensure all the components had their own spot.</div>
+            <div id="textDesc1" class="robotDescription inner">Description 1</div>
+            <div id="textDesc2" class="robotDescription" style="display:none;">Description 2</div>
+            <div id="textDesc3" class="robotDescription" style="display:none;">Description 3</div>
+            <div id="textDesc4" class="robotDescription" style="display:none;">Description 4</div>
+            <div id="textDesc5" class="robotDescription" style="display:none;">Description 5</div>
+            <div id="textDesc6" class="robotDescription" style="display:none;">Description 6</div>
+            <div id="textDesc7" class="robotDescription" style="display:none;">Description 7</div>
+            <div id="textDesc8" class="robotDescription" style="display:none;">Description 8</div>
+            <div id="textDesc9" class="robotDescription" style="display:none;">Description 9</div>
         </div>
 
         <div class="" id="thanksbanner"
@@ -164,23 +173,18 @@
         <div class="text-center cn center-block footerheight" 
              style="position:absolute;bottom:0;width:100%;background-color:yellow;min-height:75px;font-size:20px;vertical-align:middle;overflow:hidden;">
             <div id="sponsormaxheight">
-                <div id="sponsor1" class="inner"><img src="images/sponsors/bosch-logo.png" alt="Bosch" class="sizedimg" /></div>
-                <div style="display:none;" id="sponsor2" class="inner"><img src="images/sponsors/mmhs-logo.png" alt="Manchester Memorial High School" class="sizedimg" /></div>
-                <div style="display:none;" id="sponsor3" class="inner"><img src="images/sponsors/nhdoe-logo.png" alt="New Hampshire Department of Education" class="sizedimg" /></div>
-                <div style="display:none;" id="sponsor4" class="inner"><img src="images/sponsors/ti-logo.png" alt="TI" class="sizedimg" /></div>
-                <div style="display:none;" id="sponsor5" class="inner"><img src="images/sponsors/bae-logo.png" alt="BAE Systems" class="sizedimg" /></div>
-                <div style="display:none;" id="sponsor6" class="inner">Davignon Club</div>
-                <div style="display:none;" id="sponsor7" class="inner"><img src="images/sponsors/first-logo.png" alt="FIRST" class="sizedimg" /></div>
-                <div style="display:none;" id="sponsor8" class="inner"><img src="images/sponsors/mp-logo.png" alt="Millennium Precision LLC" class="sizedimg" /></div>
-                <div style="display:none;" id="sponsor9" class="inner"><img src="images/sponsors/mushield-logo.png" alt="MuShield Company" class="sizedimg" /></div>
-                <div style="display:none;" id="sponsor10" class="inner"><img src="images/sponsors/rapid-logo.png" alt="Rapid Manufacturing" class="sizedimg" /></div>
-                <div style="display:none;" id="sponsor11" class="inner"><img src="images/sponsors/sunrise-logo.png" alt="Sunrise Labs Inc." class="sizedimg" /></div>
-                <div style="display:none;" id="sponsor12" class="inner"><img src="images/sponsors/wcp-logo.png" alt="WestCoast Products" class="sizedimg" /></div>
-                <div style="display:none;" id="sponsor13" class="inner"><img src="images/sponsors/autodesk-logo.png" alt="Autodesk" class="sizedimg" /></div>
-                <div style="display:none;" id="sponsor14" class="inner"><img src="images/sponsors/bb-logo.png" alt="Batteries Plus Bulbs" class="sizedimg" /></div>
-                <div style="display:none;" id="sponsor15" class="inner"><img src="images/sponsors/first-nh-logo.png" alt="FIRST New Hampshire" class="sizedimg" /></div>
-                <div style="display:none;" id="sponsor16" class="inner"><img src="images/sponsors/marmon-logo.png" alt="Marmon Aerospace & Defense" class="sizedimg" /></div>
-                <div style="display:none;" id="sponsor17" class="inner">Temco Tool Co., Inc.</div>
+                <div id="sponsor1" class="inner"><img src="images/sponsors/2019/bosch-logo.png" alt="Bosch" class="sizedimg" /></div>
+                <div style="display:none;" id="sponsor2" class="inner"><img src="images/sponsors/2019/mmhs-logo.png" alt="Manchester Memorial High School" class="sizedimg" /></div>
+                <div style="display:none;" id="sponsor3" class="inner"><img src="images/sponsors/2019/nhdoe-logo.png" alt="New Hampshire Department of Education" class="sizedimg" /></div>
+                <div style="display:none;" id="sponsor4" class="inner"><img src="images/sponsors/2019/davignon-logo.png" alt="Davignon Club, Inc" class="sizedimg" /></div>
+                <div style="display:none;" id="sponsor5" class="inner"><img src="images/sponsors/2019/first-logo.png" alt="FIRST" class="sizedimg" /></div>
+                <div style="display:none;" id="sponsor6" class="inner"><img src="images/sponsors/2019/nbtbank-logo.png" alt="NBT Bank" class="sizedimg" /></div>
+                <div style="display:none;" id="sponsor7" class="inner"><img src="images/sponsors/2019/sunrise-logo.png" alt="Sunrise Labs Inc." class="sizedimg" /></div>
+                <div style="display:none;" id="sponsor8" class="inner"><img src="images/sponsors/2019/mp-logo.png" alt="Millennium Precision LLC" class="sizedimg" /></div>
+                <div style="display:none;" id="sponsor9" class="inner"><img src="images/sponsors/2019/mushield-logo.png" alt="MuShield Company" class="sizedimg" /></div>
+                <div style="display:none;" id="sponsor10" class="inner"><img src="images/sponsors/2019/bae-logo.png" alt="BAE Systems" class="sizedimg" /></div>                
+                <div style="display:none;" id="sponsor11" class="inner">GTI Spindle Technology</div>
+                <div style="display:none;" id="sponsor12" class="inner"><img src="images/sponsors/2019/proto-logo.png" alt="Rapid Manufacturing" class="sizedimg" /></div>
             </div>
         </div>
     </body>
