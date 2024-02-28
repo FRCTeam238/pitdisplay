@@ -1,187 +1,294 @@
 <html>
-    <head>
-        <title>FRC Team 238 Robot Tour</title>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/animate.css">
-        <link rel="stylesheet" href="css/main.css">
-        <script type="text/javascript" src="./js/2.2.0-jquery.min.js"></script>
-        <script type="text/javascript" src="./js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="./js/main.js"></script>
 
-        <script>
-            jQuery.fn.center = function () {
-                this.css("position", "absolute");
-                this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) +
-                        $(window).scrollTop()) + "px");
-                this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) +
-                        $(window).scrollLeft()) + "px");
-                return this;
-            };
+<head>
+    <title>FRC Team 238 Robot Tour</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script type="text/javascript" src="./js/2.2.0-jquery.min.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
 
-            var sponsorShowing = 1;
-            var robotPhotoShowing = 1;
-            $(function () {
-                document.addEventListener('contextmenu', event => event.preventDefault());//no right clicks allowed
+    <script>
+        jQuery.fn.center = function () {
+            this.css("position", "absolute");
+            this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) +
+                $(window).scrollTop()) + "px");
+            this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) +
+                $(window).scrollLeft()) + "px");
+            return this;
+        };
 
-                var totalH = $(window).height();
-                var totalW = $(window).width();
-                var sponsorsHeight = totalH / 7;
-                var phototextHeight = sponsorsHeight * 1.5;
-                var logoHeight = totalH / 12;
-                var nonRotatorHeights = logoHeight + sponsorsHeight + phototextHeight + 150;//alert(totalH);
-                var imagerotatorHeight = totalH - nonRotatorHeights - 20;//alert(imagerotatorHeight);
+        var sponsorShowing = 1;
+        var robotPhotoShowing = 1;
+        $(function () {
+            document.addEventListener('contextmenu', event => event.preventDefault());//no right clicks allowed
 
-                $("#photoTextDesc").css("height", phototextHeight);
-                $("#thanksbanner").css("padding-bottom", sponsorsHeight);
-                $("#touchButtonContainer").css("padding-top", logoHeight + 5);
-                $("#photoTextDesc").css("bottom", sponsorsHeight + $("#thanksbanner").height());
-                $(".footerheight").css("height", sponsorsHeight);
-                $("#logoheight").height(logoHeight);
-                $("#botimages").height(imagerotatorHeight);
-                $(".robotphoto").css("max-height", imagerotatorHeight - 40);
-                $(".robotphoto").css("max-width", ((totalW / 5) * 3));
-                //$("#botimages").center();
-                setInterval(changeSponsor, 5000);
-                $("#leftButton").click(function () {
-                    rotateRobotImageBackwards();
-                });
-                $("#rightButton").click(function () {
-                    rotateRobotImageForward();
-                });
-                $(".sizedimg").css("max-height", sponsorsHeight - 25);
-                $(".sizedimg").css("max-width", totalW - 25);
+            var totalH = $(window).height();
+            var totalW = $(window).width();
+            var sponsorsHeight = totalH / 7;
+            var phototextHeight = sponsorsHeight * 1.5;
+            var logoHeight = totalH / 12;
+            var nonRotatorHeights = logoHeight + sponsorsHeight + phototextHeight + 150;//alert(totalH);
+            var imagerotatorHeight = totalH - nonRotatorHeights - 20;//alert(imagerotatorHeight);
+
+            $("#photoTextDesc").css("height", phototextHeight);
+            $("#thanksbanner").css("padding-bottom", sponsorsHeight);
+            $("#touchButtonContainer").css("padding-top", logoHeight + 5);
+            $("#photoTextDesc").css("bottom", sponsorsHeight + $("#thanksbanner").height());
+            $(".footerheight").css("height", sponsorsHeight);
+            $("#logoheight").height(logoHeight);
+            $("#botimages").height(imagerotatorHeight);
+            $(".robotphoto").css("max-height", imagerotatorHeight - 40);
+            $(".robotphoto").css("max-width", ((totalW / 5) * 3));
+            //$("#botimages").center();
+            setInterval(changeSponsor, 5000);
+            $("#leftButton").click(function () {
+                rotateRobotImageBackwards();
             });
-            function rotateRobotImageForward() {
-                $("#robotPhoto" + robotPhotoShowing).hide("slow");
-                $("#textDesc" + robotPhotoShowing).hide();
-                robotPhotoShowing++;
-                if (robotPhotoShowing > 9) {
-                    robotPhotoShowing = 1;
-                }
-                $("#robotPhoto" + robotPhotoShowing).show("slow");
-                $("#textDesc" + robotPhotoShowing).show();
+            $("#rightButton").click(function () {
+                rotateRobotImageForward();
+            });
+            $(".sizedimg").css("max-height", sponsorsHeight - 25);
+            $(".sizedimg").css("max-width", totalW - 25);
+        });
+        function rotateRobotImageForward() {
+            $("#robotPhoto" + robotPhotoShowing).hide("slow");
+            $("#textDesc" + robotPhotoShowing).hide();
+            robotPhotoShowing++;
+            if (robotPhotoShowing > 17) {
+                robotPhotoShowing = 1;
             }
-            function rotateRobotImageBackwards() {
-                $("#robotPhoto" + robotPhotoShowing).hide("slow");
-                $("#textDesc" + robotPhotoShowing).hide();
-                robotPhotoShowing--;
-                if (robotPhotoShowing < 1) {
-                    robotPhotoShowing = 9;
-                }
-                $("#robotPhoto" + robotPhotoShowing).show("slow");
-                $("#textDesc" + robotPhotoShowing).show();
+            $("#robotPhoto" + robotPhotoShowing).show("slow");
+            $("#textDesc" + robotPhotoShowing).show();
+        }
+        function rotateRobotImageBackwards() {
+            $("#robotPhoto" + robotPhotoShowing).hide("slow");
+            $("#textDesc" + robotPhotoShowing).hide();
+            robotPhotoShowing--;
+            if (robotPhotoShowing < 1) {
+                robotPhotoShowing = 17;
             }
-            function changeSponsor() {
-                $("#sponsor" + sponsorShowing).hide("medium");
-                sponsorShowing++;
-                if (sponsorShowing > 12) {
-                    sponsorShowing = 1;
-                }
-                $("#sponsor" + sponsorShowing).show("fast");
+            $("#robotPhoto" + robotPhotoShowing).show("slow");
+            $("#textDesc" + robotPhotoShowing).show();
+        }
+        function changeSponsor() {
+            $("#sponsor" + sponsorShowing).hide("medium");
+            sponsorShowing++;
+            if (sponsorShowing > 12) {
+                sponsorShowing = 1;
             }
+            $("#sponsor" + sponsorShowing).show("fast");
+        }
 
-        </script>
-        <style>
-            .cn {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            .inner {
-                display: inline-block;
-                font-size: 3vw;
-            }
-        </style>
-    </head>
-    <body>
-        <div style="position:absolute;top:-2px;left:15px;padding:5px;background-color:black;z-index:1;font-size:30px;width:15%;" class="text-center" id="leftButton">
-            <img src="images/arrowleft.png" alt="Move Left" id="leftArr" style="margin-left:auto;margin-right:auto;" />
-        </div>
-        <div style="position:absolute;top:-2px;right:15px;padding:5px;background-color:black;z-index:1;" class="text-center" id="rightButton">
-            <img src="images/arrowright.png" alt="Move Right" id="rightArr" style="margin-left:auto;margin-right:auto;" />
-        </div>
-        <div style="padding:5px;z-index:1;font-size:25px;width:100%;" class="text-center" id="touchButtonContainer">
-            <div style="position:relative;left:50%;float:left;">
-                <div style="position:relative;left:-50%;float:left;background-color:gray;color:yellow;padding:5px;">
-                    I'm a touch screen!<br />Just click the arrows to see more
-                </div>
+    </script>
+    <style>
+        .cn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .inner {
+            display: inline-block;
+            font-size: 3vw;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="position:absolute;top:-2px;left:15px;padding:5px;background-color:black;z-index:1;font-size:30px;width:15%;"
+        class="text-center" id="leftButton">
+        <img src="images/arrowleft.png" alt="Move Left" id="leftArr" style="margin-left:auto;margin-right:auto;" />
+    </div>
+    <div style="position:absolute;top:-2px;right:15px;padding:5px;background-color:black;z-index:1;" class="text-center"
+        id="rightButton">
+        <img src="images/arrowright.png" alt="Move Right" id="rightArr" style="margin-left:auto;margin-right:auto;" />
+    </div>
+    <div style="padding:5px;z-index:1;font-size:25px;width:100%;" class="text-center" id="touchButtonContainer">
+        <div style="position:relative;left:50%;float:left;">
+            <div style="position:relative;left:-50%;float:left;background-color:gray;color:yellow;padding:5px;">
+                I'm a touch screen!<br />Just click the arrows to see more
             </div>
         </div>
+    </div>
 
-        <div class="center-block" style="position:absolute;top:0;width:100%;background-color:black;min-height:75px;" id="logoheight">
-            <img src="images/logo.png" alt="238 Logo" id="teamlogo" style="margin-left:auto;margin-right:auto;display:block;height:85%;" />
-        </div>
+    <div class="center-block" style="position:absolute;top:0;width:100%;background-color:black;min-height:75px;"
+        id="logoheight">
+        <img src="images/logo.png" alt="238 Logo" id="teamlogo"
+            style="margin-left:auto;margin-right:auto;display:block;height:85%;" />
+    </div>
 
-       <div id="botimages" style="width:100%;text-align:center;">
-            <div style="width:100%;text-align:center;" class="cn">
-                <div id="robotPhoto1" class="inner">
-                    <p class="robotTitle">Starting Config - Side</p>
-                    <img src="images/robot/2020/1.png" alt="RobotPhoto1" class="robotphoto"/>
-                </div>
-                <div id="robotPhoto2" class="" style="display:none;">
-                    <p class="robotTitle">Starting Config - ISO</p>
-                    <img src="images/robot/2020/2.png" alt="RobotPhoto2" class="robotphoto"/>
-                </div>
-                <div id="robotPhoto3" class="" style="display:none;">
-                    <p class="robotTitle">Starting Config - Front</p>
-                    <img src="images/robot/2020/3.png" alt="RobotPhoto3" class="robotphoto" />
-                </div>
-                <div id="robotPhoto4" class="" style="display:none;">
-                    <p class="robotTitle">Full Extend - Side</p>
-                    <img src="images/robot/2020/4.png" alt="RobotPhoto4" class="robotphoto" />
-                </div>
-                <div id="robotPhoto5" class="" style="display:none;">
-                    <p class="robotTitle">Full Extend - ISO</p>
-                    <img src="images/robot/2020/5.png" alt="RobotPhoto5" class="robotphoto" />
-                </div>
-                <div id="robotPhoto6" class="" style="display:none;">
-                    <p class="robotTitle">Full Extend - Front</p>
-                    <img src="images/robot/2020/6.png" alt="RobotPhoto6" class="robotphoto" />
-                </div>
-                <div id="robotPhoto7" class="" style="display:none;">
-                    <p class="robotTitle">Full Extend - Side</p>
-                    <img src="images/robot/2020/7.png" alt="RobotPhoto7" class="robotphoto" />
-                </div>
-                <div id="robotPhoto8" class="" style="display:none;">
-                    <p class="robotTitle">Full Cargo Extend - ISO</p>
-                    <img src="images/robot/2020/8.png" alt="RobotPhoto8" class="robotphoto" />
-                </div>
+    <div id="botimages" style="width:100%;text-align:center;">
+        <div style="width:100%;text-align:center;" class="cn">
+            <div id="robotPhoto1" class="inner" style="display: none;">
+                <p class="robotTitle">Hush Short</p>
+                <img src="images/robot/2024/hush2_short.png" alt="RobotPhoto1" class="robotphoto" />
             </div>
-        </div>
+            <div id="robotPhoto2" class="" style="display:none">
+                <p class="robotTitle">Hush Tall</p>
+                <img src="images/robot/2024/hush1_tall.png" alt="RobotPhoto2" class="robotphoto" />
+            </div>
+            <div id="robotPhoto3" class="" style="display:none">
+                <p class="robotTitle">Hush Short - Back</p>
+                <img src="images/robot/2024/hush4_short_back.png" alt="RobotPhoto3" class="robotphoto" />
+            </div>
+            <div id="robotPhoto4" class="" style="display:none">
+                <p class="robotTitle">Hush Tall - Back</p>
+                <img src="images/robot/2024/hush3_tall_back.png" alt="RobotPhoto4" class="robotphoto" />
+            </div>
+            <div id="robotPhoto5" class="" style="display:none">
+                <p class="robotTitle">Drivetrain</p>
+                <img src="images/robot/2024/dt-top.png" alt="RobotPhoto5" class="robotphoto" />
+            </div>
+            <div id="robotPhoto6" class="" style="display:none">
+                <p class="robotTitle">Drivetrain</p>
+                <img src="images/robot/2024/dt-iso.png" alt="RobotPhoto6" class="robotphoto" />
+            </div>
+            <div id="robotPhoto7" class="" style="display:none">
+                <p class="robotTitle">Intake</p>
+                <img src="images/robot/2024/in-back.png" alt="RobotPhoto7" class="robotphoto" />
+            </div>
+            <div id="robotPhoto8" class="" style="display:none">
+                <p class="robotTitle">Intake</p>
+                <img src="images/robot/2024/in-iso.png" alt="RobotPhoto8" class="robotphoto" />
+            </div>
+            <div id="robotPhoto9" class="" style="display:none">
+                <p class="robotTitle">Elevator</p>
+                <img src="images/robot/2024/el-iso.png" alt="RobotPhoto9" class="robotphoto" />
+            </div>
+            <div id="robotPhoto10" class="" style="display:none">
+                <p class="robotTitle">Elevator</p>
+                <img src="images/robot/2024/el-back-iso.png" alt="RobotPhoto10" class="robotphoto" />
+            </div>
+            <div id="robotPhoto11" class="" style="display:none">
+                <p class="robotTitle">Pivot</p>
+                <img src="images/robot/2024/pv-back.png" alt="RobotPhoto11" class="robotphoto" />
+            </div>
+            <div id="robotPhoto12" class="" style="display:none">
+                <p class="robotTitle">Feeder Shooter</p>
+                <img src="images/robot/2024/fs-side.png" alt="RobotPhoto12" class="robotphoto" />
+            </div>
+            <div id="robotPhoto13" class="" style="display:none">
+                <p class="robotTitle">Feeder Shooter</p>
+                <img src="images/robot/2024/fs-back-iso.png" alt="RobotPhoto13" class="robotphoto" />
+            </div>
+            <div id="robotPhoto14" class="" style="display:none">
+                <p class="robotTitle">Team History</p>
+                <img src="images/ops/2024/history.png" alt="RobotPhoto14" class="robotphoto" />
+            </div>
+            <div id="robotPhoto15" class="" style="display:none">
+                <p class="robotTitle">Divisions</p>
+                <img src="images/ops/2024/divisions.png" alt="RobotPhoto15" class="robotphoto" />
+            </div>
+            <div id="robotPhoto16" class="" style="display:none">
+                <p class="robotTitle">Mentor :: Student</p>
+                <img src="images/ops/2024/mentorstudents.png" alt="RobotPhoto16" class="robotphoto" />
+            </div>
+            <div id="robotPhoto17" class="" style="display:none">
+                <p class="robotTitle">Mentor :: Alumni</p>
+                <img src="images/ops/2024/mentoralumni.png" alt="RobotPhoto17" class="robotphoto" />
+            </div>
 
-        <div id="photoTextDesc" style="position:absolute;width:100%;overflow:hidden;padding-left:10px;padding-right:10px;" align="justify" class="cn">
-            <div id="textDesc1" class="robotDescription inner">Description 1</div>
-            <div id="textDesc2" class="robotDescription" style="display:none;">Description 2</div>
-            <div id="textDesc3" class="robotDescription" style="display:none;">Description 3</div>
-            <div id="textDesc4" class="robotDescription" style="display:none;">Description 4</div>
-            <div id="textDesc5" class="robotDescription" style="display:none;">Description 5</div>
-            <div id="textDesc6" class="robotDescription" style="display:none;">Description 6</div>
-            <div id="textDesc7" class="robotDescription" style="display:none;">Description 7</div>
-            <div id="textDesc8" class="robotDescription" style="display:none;">Description 8</div>
-            <div id="textDesc9" class="robotDescription" style="display:none;">Description 9</div>
         </div>
+    </div>
 
-        <div class="" id="thanksbanner"
-             style="position:absolute;bottom:0;width:100%;background-color:black;color:white;font-size:20px;overflow:hidden;">
-            <div class="text-center"><em>Team 238 Would Like To Thank Our Generous Sponsors:</em></div>
+    <div id="photoTextDesc" style="position:absolute;width:100%;overflow:hidden;padding-left:10px;padding-right:10px;"
+        align="justify" class="cn">
+        <div id="textDesc1" class="robotDescription inner text-center">
         </div>
+        <div id="textDesc2" class="robotDescription text-center" style="display:none;">
+        </div>
+        <div id="textDesc3" class="robotDescription text-center" style="display:none;">
+        </div>
+        <div id="textDesc4" class="robotDescription text-center" style="display:none;">
+        </div>
+        <div id="textDesc5" class="robotDescription text-center" style="display:none;">
+            30.5” x 26.5” Overall <br>
+            Swerve Drive MK4is L2 Ratio Neo for Steer, Falcon for Driving
+        </div>
+        <div id="textDesc6" class="robotDescription text-center" style="display:none;">
+            0.5” Ground Clearance to avoid running over notes <br>
+            1x1 mounting ring allows for connection of mechanisms and bumpers
+        </div>
+        <div id="textDesc7" class="robotDescription text-center" style="display:none;">
+            Geared 1:1 on a Neo <br>
+            Intakes under bumper using design inspired by 95 The Grasshoppers<br>
+            Can intake from the ground and source
+        </div>
+        <div id="textDesc8" class="robotDescription text-center" style="display:none;">
+            Uses rubber covered aluminum tubes powered by motors to intake up to feeder <br>
+            Once the note is intaken it gets fed into the shooter to be scored
+        </div>
+        <div id="textDesc9" class="robotDescription text-center" style="display:none;">
+            2 identical elevators on either side of the robot <br>
+            2 stage Belt Driven continuous elevators <br>
+            Driven by 2 Neos on a 12:1 Ratio
+        </div>
+        <div id="textDesc10" class="robotDescription text-center" style="display:none;">
+            Hex Jackshaft mechanically links both elevators together <br>
+            Strong enough to lift the robot for endgame
+        </div>
+        <div id="textDesc11" class="robotDescription text-center" style="display:none;">
+            Used to rotate Feeder/Shooter to aim to speaker, amp and trap <br>
+            Driven by 60:1 gear reduction Max Planetary Neo and a 2.56:1 belt reduction for an overall ratio of 153.33:1
+            <br>
+            Rev through-bore encoder acts as an absolute encoder to know accurate angle of the shooter
 
-        <div class="text-center cn center-block footerheight" 
-             style="position:absolute;bottom:0;width:100%;background-color:yellow;min-height:75px;font-size:20px;vertical-align:middle;overflow:hidden;">
-            <div id="sponsormaxheight">
-               <div id="sponsor1" class="inner"><img src="images/sponsors/2020/bosch-logo.png" alt="Bosch" class="sizedimg" /></div>
-                <div style="display:none;" id="sponsor2" class="inner"><img src="images/sponsors/2020/mmhs-logo.png" alt="Manchester Memorial High School" class="sizedimg" /></div>
-                <div style="display:none;" id="sponsor3" class="inner"><img src="images/sponsors/2020/first-logo.png" alt="FIRST" class="sizedimg" /></div>
-                <div style="display:none;" id="sponsor4" class="inner"><img src="images/sponsors/2020/nbtbank-logo.png" alt="NBT Bank" class="sizedimg" /></div>
-                <div style="display:none;" id="sponsor5" class="inner"><img src="images/sponsors/2020/proto-logo.png" alt="Protolabs" class="sizedimg" /></div>
-                <div style="display:none;" id="sponsor6" class="inner"><img src="images/sponsors/2020/nhdoe-logo.png" alt="New Hampshire Department of Education" class="sizedimg" /></div>
-                <div style="display:none;" id="sponsor7" class="inner"><img src="images/sponsors/2020/sunrise-logo.png" alt="Sunrise Labs Inc." class="sizedimg" /></div>
-                <div style="display:none;" id="sponsor8" class="inner"><img src="images/sponsors/2020/davignon-logo.png" alt="Davignon Club, Inc" class="sizedimg" /></div>
-                <div style="display:none;" id="sponsor9" class="inner"><img src="images/sponsors/2020/mp-logo.png" alt="Millennium Precision LLC" class="sizedimg" /></div>
-                <div style="display:none;" id="sponsor10" class="inner"><img src="images/sponsors/2020/mushield-logo.png" alt="MuShield Company" class="sizedimg" /></div>                
-                <div style="display:none;" id="sponsor11" class="inner"><img src="images/sponsors/2020/americansoftware-logo.png" alt="American Software" class="sizedimg" /></div>
-                <div style="display:none;" id="sponsor12" class="inner"><img src="images/sponsors/2020/cabinets-logo.png" alt="Cabinets for Less" class="sizedimg" /></div>
-                <div style="display:none;" id="sponsor13" class="inner"><img src="images/sponsors/2020/GTI-logo.png" alt="GTI Spindle Technology" class="sizedimg" /></div>            </div>
         </div>
-    </body>
+        <div id="textDesc12" class="robotDescription text-center" style="display:none;">
+            The Notes are transferred to feeder from the intake by using <br>
+            Uses elevator to get height to score the note <br>
+            Uses Pivot to aim the shooter to score notes <br>
+            Feeder is ran off a Neo 550 on a 3:1 ratio
+        </div>
+        <div id="textDesc13" class="robotDescription text-center" style="display:none;">
+            Split Horizontal Shooter design allows the left and right side shooter wheels to spin at different speeds,
+            which adds spin to the note. <br>
+            Note is compressed to 1.5” between shooter wheels. <br>
+            Shooter is powered by 2 Falcons on a 1:1.33 Step-up for a theoretical max of 8500 RPM
+        </div>
+        <div id="textDesc14" class="robotDescription text-center" style="display:none;">
+        </div>
+        <div id="textDesc15" class="robotDescription text-center" style="display:none;">
+        </div>
+        <div id="textDesc16" class="robotDescription text-center" style="display:none;">
+        </div>
+        <div id="textDesc17" class="robotDescription text-center" style="display:none;">
+        </div>
+    </div>
+
+    <div class="" id="thanksbanner"
+        style="position:absolute;bottom:0;width:100%;background-color:black;color:white;font-size:20px;overflow:hidden;">
+        <div class="text-center"><em>Team 238 Would Like To Thank Our Generous Sponsors:</em></div>
+    </div>
+
+    <div class="text-center cn center-block footerheight"
+        style="position:absolute;bottom:0;width:100%;background-color:yellow;min-height:75px;font-size:20px;vertical-align:middle;overflow:hidden;">
+        <div id="sponsormaxheight">
+            <div style="" id="sponsor1" class="inner"><img src="images/sponsors/2024/servicecreditunion-logo.png"
+                    alt="Sponsor1" class="sizedimg" /></div>
+            <div style="display:none;" id="sponsor2" class="inner"><img src="images/sponsors/2024/first-logo.png"
+                    alt="Sponsor2" class="sizedimg" /></div>
+            <div style="display:none;" id="sponsor3" class="inner"><img src="images/sponsors/2024/bae-logo.png"
+                    alt="Sponsor3" class="sizedimg" /></div>
+            <div style="display:none;" id="sponsor4" class="inner"><img src="images/sponsors/2024/mmhs-logo.png"
+                    alt="Sponsor4" class="sizedimg" /></div>
+            <div style="display:none;" id="sponsor5" class="inner"><img
+                    src="images/sponsors/2024/analogdevices-logo.png" alt="Sponsor5" class="sizedimg" /></div>
+            <div style="display:none;" id="sponsor6" class="inner"><img src="images/sponsors/2024/nhdoe-logo.png"
+                    alt="Sponsor6" class="sizedimg" /></div>
+            <div style="display:none;" id="sponsor7" class="inner"><img src="images/sponsors/2024/bosch-logo.png"
+                    alt="Sponsor7" class="sizedimg" /></div>
+            <div style="display:none;" id="sponsor8" class="inner"><img src="images/sponsors/2024/ghaas-logo.png"
+                    alt="Sponsor8" class="sizedimg" /></div>
+            <div style="display:none;" id="sponsor9" class="inner"><img src="images/sponsors/2024/mp-logo.png"
+                    alt="Sponsor9" class="sizedimg" /></div>
+            <div style="display:none;" id="sponsor10" class="inner"><img src="images/sponsors/2024/8intuitive-logo.png"
+                    alt="Sponsor10" class="sizedimg" /></div>
+            <div style="display:none;" id="sponsor11" class="inner"><img src="images/sponsors/2024/mushield-logo.png"
+                    alt="Sponsor11" class="sizedimg" /></div>
+        </div>
+</body>
+
 </html>
